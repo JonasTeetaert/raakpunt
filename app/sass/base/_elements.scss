@@ -7,7 +7,7 @@ datalist,
 input,
 select,
 textarea {
-    color: $color-text;
+    color: $color-primary;
 }
 
 html {
@@ -28,7 +28,7 @@ html {
 }
 
 body {
-    font-family: $font-primary;
+    font-family: $font-secondary;
     font-size: globalPerc($text-size);
     &:after {
         content: "0em";
@@ -52,33 +52,43 @@ h6 {
     font-weight: 700;
     margin: 0 0 ($gutter/2) 0;
     line-height: 1.1;
+    font-family: $font-primary-regular;
 }
 
 h1,
 .title-primary {
-    font-family: $font-primary;
-    font-size: 2.1em;
+    font-size: 1.4em;
     font-weight: 900;
+    text-transform: uppercase;
+    font-family: $font-primary-bold;
+    padding-bottom: 15px;
+    position: relative;
+
+    &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 35px;
+        height: 3px;
+        background-color: $color-primary;
+    }
+
+
 }
 
 h2,
 .title-secondary {
-    font-family: $font-primary;
-    font-size: 1.9em;
+    font-size: 1.4em;
     font-weight: 900;
+    text-transform: uppercase;
+    font-family: $font-primary-bold;
 }
 
 h3,
 .title-tertiary {
-    font-family: $font-primary;
     font-size: 1.5em;
     font-weight: 500;
-}
-
-h4 {
-    font-family: $font-primary;
-    font-size: 1.3em;
-    font-weight: 900;
 }
 
 // ========================================================
@@ -129,6 +139,7 @@ figcaption,
 }
 
 p {
+    text-align: center;
     &:last-of-type {
         margin-top: $gutter/2;
     }

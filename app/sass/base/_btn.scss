@@ -1,76 +1,62 @@
-.btn {
-	font-weight: 900;
+.btn-primary {
+	font-family: $font-primary-bold;
+	text-transform: uppercase;
+	font-size: 1.4em;
 	text-decoration: none;
+	border: 3px solid $color-primary;
+	padding:0px 40px;
 
-	&:hover {
-		text-shadow: 1px 1px $color-primary;
+	&:focus,
+	&:hover, {
+		border-color: $color-secondary;
 	}
 }
 
-.btn-2 {
-	font-weight: 900;
+.btn-secondary {
 	text-decoration: none;
-
-	&:hover {
-		text-shadow: 1px 1px $color-secondary;
-	}
+	text-transform: uppercase;
+	
 }
 
-.btn--stroke {
-	color: transparent;
-	-webkit-text-stroke: 0.5px black;
-}
-
-.btn--firstletter {
-
-	&:first-letter {
-
-		text-shadow: 1px 1px $color-secondary;
-	}
-
-}
-
-.btn--shadow {
-	text-shadow: 1px 1px $color-secondary;
-}
-
-.toggle {
-	display: none;
-}
-
-.toggle--label {
-	display: inline-block;
+.btn-toggle {
+	width: 60px;
+	height: 60px;
 	position: relative;
-	cursor: pointer;
-	user-select: none;
-	font-weight: bold;
-	margin: 0;
+	background-color: $color-primary;
 
-	&:hover {
-        color: $color-secondary;
-    }
-
-	&:before {
-		position: relative;
-		content: attr(data-off);
-		opacity: 1;
-		transition: opacity $time ease-in;
+	input {
+		display: none;
 	}
-
-	&:after {
+	
+	.icon {
 		position: absolute;
-		left: 0;
-		top: 0;
-		content: attr(data-on);
-		opacity: 0;
-		transition: opacity $time ease-out;
+		top: 50%;
+		left: 50;
+		transform: translate(-50%,-50%);
+		fill: #fff;
+		transition: all $time-fast ease;
+		&:hover {
+			fill: #fff;
+		}
 	}
-}
 
-.toggle:checked ~ .toggle--label:before {
-	opacity: 0;
-}
+	.icon--on {
+		visibility: hidden;
+		opacity: 0;
+	}
 
-.toggle:checked ~ .toggle--label:after {
-	opacity: 1;
+	.icon--off {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	input[type='checkbox']:checked ~ .icon--on {
+		opacity: 1;
+		visibility: visible;
+	} 
+
+	input[type='checkbox']:checked ~ .icon--off {
+		visibility: hidden;
+		opacity: 0;
+	} 
 }

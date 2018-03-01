@@ -13,7 +13,7 @@ var autoprefixer = require('gulp-autoprefixer');
 var rimraf = require('rimraf');
 var sassdoc = require('sassdoc');
 var sassdoc = require('require-dir');
-var browser = require('browser-sync');
+var browserSync = require('browser-sync');
 var sequence = require('run-sequence');
 var php = require('gulp-connect-php');
 var babel = require("gulp-babel");
@@ -22,7 +22,7 @@ var babel = require("gulp-babel");
 // =============================================================================
 // Server URL
 // =============================================================================
-var dynamicServerURL = 'http://template.dev';
+var dynamicServerURL = 'http://raakpunt.dev';
 
 // =============================================================================
 // Use `spawn` to execute shell command using Node
@@ -77,7 +77,8 @@ gulp.task('sass', function () {
         .pipe(autoprefixer())
         .pipe(cssnano())
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest(buildPath + '/css'));
+        .pipe(gulp.dest(buildPath + '/css'))
+        .pipe(browserSync.reload({ stream: true }));
 });
 
 
@@ -143,18 +144,15 @@ gulp.task('build', function (done) {
 // =============================================================================
 // Start a server with LiveReload to preview the site in
 // =============================================================================
-gulp.task('server', ['build'], function () {
-    php.server({
-        base: buildPath,
-        port: PORT,
-        keepalive: true
+// http://localhost:3000/buildPath/index.php
+gulp.task('server', function () {
+    php.server({}, function () {
+        browserSync({
+            proxy: '127.0.0.1:8000',
+            startPath: "/" + buildPath + '/index.php'
+        });
     });
 
-    browser.init({
-        proxy: dynamicServerURL + ':' + PORT,
-        port: 8080,
-        open: true,
-    });
 });
 
 
@@ -162,10 +160,10 @@ gulp.task('server', ['build'], function () {
 // Build the site, run the server, and watch for file changes
 // =============================================================================
 gulp.task('default', ['build', 'server'], function () {
-    gulp.watch([srcPath + '/**/*.php'], ['html']);
-    gulp.watch([srcPath + '/sass/**/*.scss'], ['sass']);
-    gulp.watch([srcPath + '/assets/fonts/**/*'], ['fonts']);
-    gulp.watch([srcPath + '/assets/json/*.json'], ['json']);
-    gulp.watch([srcPath + '/js/**/*.js'], ['javascript']);
-    gulp.watch([srcPath + '/assets/images/**/*'], ['images']);
+    gulp.watch([srcPath + '/**/*.php'], ['html', browserSync.reload]);
+    gulp.watch([srcPath + '/sass/**/*.scss'], ['sass', browserSync.reload]);
+    gulp.watch([srcPath + '/assets/fonts/**/*'], ['fonts', browserSync.reload]);
+    gulp.watch([srcPath + '/assets/json/*.json'], ['json', browserSync.reload]);
+    gulp.watch([srcPath + '/js/**/*.js'], ['javascript', browserSync.reload]);
+    gulp.watch([srcPath + '/assets/images/**/*'], ['images', browserSync.reload]);
 });

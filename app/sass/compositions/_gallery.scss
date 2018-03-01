@@ -1,0 +1,19 @@
+.gallery {
+
+    .gallery-img {
+        margin: $gutter/2 0;
+    }
+
+    .go-back {
+        float: left;
+    }
+
+    .go-next {
+        float: right;
+    } 
+
+    .close {
+        display: block;
+        text-align: right;
+    }
+}

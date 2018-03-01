@@ -1,0 +1,52 @@
+.gallery-img {
+    background-image: url('../assets/images/placeholder.jpg');
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    cursor: pointer;
+    padding-bottom: 100%;
+
+    .overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba(255, 255, 255, $opacity);
+        opacity: 0;
+        transition: opacity $time-fast ease;
+
+        .icon {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 50px;
+            height: 50px;
+            fill: $color-primary;
+            opacity: 1 !important;
+            transform: translate(-50%, -50%);
+            transition: fill $time-fast ease;
+
+            &:hover {
+                fill: $color-secondary;
+            }
+        }
+    }
+
+    &:active,
+    &:focus,
+    &:hover {
+        .overlay {
+            opacity: 1;
+        }
+    }
+}
+
+.gallery-img--slider {
+    cursor: default;
+    padding-bottom: 133.3333%;
+    .overlay {
+        display: none;
+    }
+}

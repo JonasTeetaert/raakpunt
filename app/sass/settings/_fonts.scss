@@ -1,1 +1,21 @@
-$font-primary: "Helvetica Neue", sans-serif;
+@font-face {
+    font-family: 'Antonio Regular';
+    src: url('../assets/fonts/Antonio-Regular.ttf') format('truetype');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Antonio Light';
+    src: url('../assets/fonts/Antonio-Light.ttf') format('truetype');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Antonio Bold';
+    src: url('../assets/fonts/Antonio-Bold.ttf') format('truetype');
+    font-style: normal;
+}
+
+$font-primary-regular: 'Antonio Regular', sans-serif;
+$font-primary-bold: 'Antonio Bold', sans-serif;
+$font-secondary: 'Cantarell', sans-serif;
