@@ -18,7 +18,6 @@ var sequence = require('run-sequence');
 var php = require('gulp-connect-php');
 var babel = require("gulp-babel");
 
-
 // =============================================================================
 // Server URL
 // =============================================================================

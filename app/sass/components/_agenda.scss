@@ -1,0 +1,99 @@
+.agenda-item {
+
+    .agenda-item__hour,
+    .agenda-item__location,
+    .agenda-item__description,
+    .agenda-item__name {
+        border: 3px solid $color-primary;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        span {
+            padding: 5px;
+            text-align: center;
+        }
+    }
+
+    // In deze volgorde laten staan (hoogte klopt anders niet)
+    .agenda-item__visible {
+        display: flex;
+        margin-bottom: 8px;
+
+        span {
+            padding: 0;
+        }
+
+        .agenda-item__hour,
+        .agenda-item__location {
+            display: none;
+        }
+    }
+
+    .agenda-item__name {
+        flex-grow: 2;
+        margin: 0 8px;
+        width: 60%;
+    }
+
+    .column {
+        flex-basis: 50%;
+
+        &:first-child {
+            padding-right: 4px;
+        } 
+
+        &:nth-child(2) {
+            padding-left: 4px;
+        }
+    }
+
+    .agenda-item__hour,
+    .agenda-item__location {
+        height: 100%;
+    }
+
+    .agenda-item__description {
+        margin: 8px 0;
+    }
+}
+
+@include respond-min-width($view-medium-devices) {
+
+    .agenda-item {
+
+        .agenda-item__visible {
+            .agenda-item__hour,
+            .agenda-item__location {
+                display: flex;
+            }
+        }
+
+        .agenda-item__name {
+            width: inherit;
+            flex-grow: 1;
+        }
+
+        .agenda-item__hour,
+        .agenda-item__location {
+            width: inherit;
+            margin-right: 8px;
+            height: initial;
+            flex-grow: 1;
+
+            span {
+                padding: 0 5px;
+            }
+        }
+
+        .agenda-item__description {
+            margin-top: 0;
+            margin-left: 68px;
+            margin-right: 68px; 
+        }
+
+        .column {
+            display: none;
+        }
+    }
+}

@@ -1,5 +1,7 @@
 .nav {
-    margin: $gutter;
+    color: #fff;
+    display: flex;
+    height: 0;
     
     input {
         display: none;
@@ -7,12 +9,133 @@
 
     ul {
         padding: 0;
-        display: none;
         list-style: none;
         text-align: center;
+        align-self: center;
+        position: relative;
     }
 
-    li {
+    li a {
+        color: #fff;
+        padding: $gutter/2 0;
+        font-size: 1.4em;
+        font-family: $font-primary-regular;
+        text-transform: uppercase;
+        position: relative;
 
+        &:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background: #fff;
+            opacity: 0;
+        }
+
+        &.active,
+        &:hover {
+
+            &:before {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.nav__panel {
+    position: fixed;
+    overflow: hidden;
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $color-primary;
+    z-index: 1000;
+    justify-content: center;
+    transition: all $time-fast;
+}
+
+.nav__hamburger {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    right: $gutter;
+    top: 15px;
+    cursor: pointer;
+    z-index: 50;
+}
+
+.nav__close {
+    fill: #fff;
+    position: absolute;
+    top: $gutter;
+    right: $gutter;
+    width: 25px;
+    height: 25px;
+}
+
+#nav__toggle[type='checkbox']:checked ~ .nav__panel {
+    opacity: 1;
+    visibility: visible;
+}
+
+.nav__sponsors,
+.nav__logo {
+    display: none;
+}
+
+@media screen and (min-width: $view-large-devices) {
+
+    .nav__hamburger {
+        position: fixed;
+        top: 50%;
+        right: $gutter * 2;
+        transform: translateY(-50%);
+    }
+
+    .nav__panel {
+        width: 20%;
+        max-width: 230px;
+        right: 0;
+        left: initial;
+        transform: translateX(100%);
+    }
+
+    #nav__toggle[type='checkbox']:checked ~ .nav__panel {
+        transform: translateX(0);
+    }
+
+    .nav__logo {
+        display: block;
+        position: fixed;
+        right: 2.2rem;
+        top: $gutter * 2;
+        width: 50px;
+        transform: rotate(-90deg);
+        transform-origin: center;
+        z-index: 1;
+    }
+
+    .nav__sponsors {
+        display: block;
+        position: fixed !important;
+        left: $gutter * 2;
+        bottom: $gutter;
+        width: 100px;
+        align-self: initial;
+        z-index: 1;
+
+        li {
+            display: block;
+        }
+
+        img {
+            width: 100px;
+        }
     }
 }

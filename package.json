@@ -1,8 +1,8 @@
 {
-  "name": "template",
+  "name": "RaakpuntWebsite",
   "version": "0.0.1",
-  "description": "Template for making websites",
-  "main": "index.js",
+  "description": "Website for Raakpunt VZW",
+  "main": "index.php",
   "scripts": {
     "start": "node index.js"
   },

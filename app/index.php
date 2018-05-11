@@ -9,6 +9,6 @@
       		</div>
       	</div>
 	</section>
-	<script type="text/javascript" src="js/main.js"></script>
+	<?php include 'inc/script.php' ?>
 </body>
 </html>
