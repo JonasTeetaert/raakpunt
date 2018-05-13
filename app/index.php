@@ -1,14 +1,15 @@
 <?php include 'inc/head.php' ?>
+
 <body>
-	<section class="section">
-		<div class="section__inner">
-      		<div class="content-box">
-      			<h1>This a template for developing applications using sass and gulp</h1>
-      			<p>made by Jonas Teetaert</p>
-      			<img src="assets/images/merci.gif" alt="merci">
-      		</div>
-      	</div>
-	</section>
+	<?php include 'inc/nav.php'?>
+	<div id="fullpage">
+		<section class="section"></section>
+		<section class="section">Some section</section>
+		<section class="section">Some section</section>
+		<section class="section">Some section</section>
+		<section class="section">Some section</section>
+	</div>
 	<?php include 'inc/script.php' ?>
 </body>
+
 </html>
